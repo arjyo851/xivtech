@@ -1,17 +1,18 @@
 const express =  require('express')
 const axios = require('axios')
 const path = require('path'); 
+require('dotenv').config(); 
 const app = express()
 const PORT  = process.env.PORT || 3000;
+const ENV_WEATHER_API_KEY = process.env.WEATHER_API_KEY;
+
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-const WEATHER_API_KEY = 'fe651660b7873db35ac6de2e9581367c'
+const WEATHER_API_KEY = ENV_WEATHER_API_KEY
 const WEATHER_API_BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
-// app.get('/',async(req,res)=>{
-//     res.body
-// })
+
 
 app.post('/getWeather',async(req,res)=>{
     try{
